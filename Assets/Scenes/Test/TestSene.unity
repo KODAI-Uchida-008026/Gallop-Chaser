@@ -469,82 +469,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5352096220424634454, guid: 7b74409967c03ed43a5f87aa026fc295, type: 3}
   m_PrefabInstance: {fileID: 780178202}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &452348104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452348102}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b84222345c48676408ad11f7d63c71cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::pCon
-  speed: 5
-  jump: 5
---- !u!54 &452348105
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452348102}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 122
-  m_CollisionDetection: 0
---- !u!65 &452348106
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452348102}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3, y: 3, z: 3}
-  m_Center: {x: 0, y: 2, z: 0.5}
---- !u!114 &452348107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452348102}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f274458fd01260458c72623058b0253, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::umaCon
-  moveSpeed: 5
-  jumpForce: 7
 --- !u!114 &452348108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -577,13 +501,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1
-  m_Radius: 1
+  m_Height: 2
+  m_Radius: 2
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_StepOffset: 0.2
+  m_SkinWidth: 0.05
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Center: {x: 0, y: 2, z: 0.25}
 --- !u!1001 &780178202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -592,6 +516,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 767689479367244265, guid: 7b74409967c03ed43a5f87aa026fc295, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5352096220424634454, guid: 7b74409967c03ed43a5f87aa026fc295, type: 3}
       propertyPath: m_Name
       value: LPHorse_Saddled_Chestnut_01
@@ -640,18 +568,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5352096220424634454, guid: 7b74409967c03ed43a5f87aa026fc295, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 452348104}
-    - targetCorrespondingSourceObject: {fileID: 5352096220424634454, guid: 7b74409967c03ed43a5f87aa026fc295, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 452348105}
-    - targetCorrespondingSourceObject: {fileID: 5352096220424634454, guid: 7b74409967c03ed43a5f87aa026fc295, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 452348106}
-    - targetCorrespondingSourceObject: {fileID: 5352096220424634454, guid: 7b74409967c03ed43a5f87aa026fc295, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 452348107}
     - targetCorrespondingSourceObject: {fileID: 5352096220424634454, guid: 7b74409967c03ed43a5f87aa026fc295, type: 3}
       insertIndex: -1
       addedObject: {fileID: 452348109}
