@@ -15,6 +15,8 @@ public class testController : MonoBehaviour
     // CharacterController の参照
     private CharacterController characterController;
 
+    private Animator animator;
+
     // 移動速度を保存する変数
     private Vector3 moveVelocity;
 
@@ -22,6 +24,10 @@ public class testController : MonoBehaviour
     {
         // CharacterController コンポーネント取得
         characterController = GetComponent<CharacterController>();
+
+        animator = GetComponent<Animator>();
+        animator.SetFloat("MoveSpeed", 3f);
+
     }
 
     void Update()
