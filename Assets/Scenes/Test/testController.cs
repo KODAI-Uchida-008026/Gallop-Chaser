@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 // CharacterController が必須になる
 [RequireComponent(typeof(CharacterController))]
 public class testController : MonoBehaviour
@@ -15,6 +14,7 @@ public class testController : MonoBehaviour
     // CharacterController の参照
     private CharacterController characterController;
 
+    // アニメーターの参照
     private Animator animator;
 
     // 移動速度を保存する変数
@@ -22,12 +22,11 @@ public class testController : MonoBehaviour
 
     void Start()
     {
-        // CharacterController コンポーネント取得
+        // CharacterControllerコンポーネント取得
         characterController = GetComponent<CharacterController>();
 
-        animator = GetComponent<Animator>();
-        animator.SetFloat("MoveSpeed", 3f);
-
+        // 馬の子オブジェクトにあるAnimatorコンポーネントを取得
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -77,5 +76,9 @@ public class testController : MonoBehaviour
 
         // キャラクター移動
         characterController.Move(moveVelocity * Time.deltaTime);
+
+        // アニメーター
+        animator.SetFloat("JumpPower", moveVelocity.y);
+        animator.SetFloat("MoveSpeed", new Vector2(moveVelocity.x, moveVelocity.z).magnitude);
     }
 }
