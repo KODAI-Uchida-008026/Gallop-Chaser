@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 // CharacterController が必須になる
 [RequireComponent(typeof(CharacterController))]
 public class testController : MonoBehaviour
@@ -14,9 +15,6 @@ public class testController : MonoBehaviour
     // CharacterController の参照
     private CharacterController characterController;
 
-    // Transform の参照
-    private Transform tm;
-
     // 移動速度を保存する変数
     private Vector3 moveVelocity;
 
@@ -24,14 +22,11 @@ public class testController : MonoBehaviour
     {
         // CharacterController コンポーネント取得
         characterController = GetComponent<CharacterController>();
-
-        // Transform取得
-        tm = transform;
     }
 
     void Update()
     {
-        // 毎フレーム 横移動をリセット
+        // 毎フレーム 横・前後移動をリセット
         moveVelocity.x = 0f;
         moveVelocity.z = 0f;
 
@@ -62,21 +57,19 @@ public class testController : MonoBehaviour
         // 地面に接触しているか
         if (characterController.isGrounded)
         {
-            // スペースキー押下時にジャンプ
+            // スペースキーでジャンプ
             if (Keyboard.current.spaceKey.wasPressedThisFrame)
             {
-                // 上方向にジャンプ力を与える
                 moveVelocity.y = jumpPower;
             }
         }
         else
         {
-            // 空中では重力を加算  Physics.gravity.y は通常 -9.81
+            // 重力を加算（空中）
             moveVelocity.y += Physics.gravity.y * Time.deltaTime;
         }
 
         // キャラクター移動
-        // Move() は「このフレームでどれだけ移動するか」を渡すUnity側のメソッド
         characterController.Move(moveVelocity * Time.deltaTime);
     }
 }
