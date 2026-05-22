@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class testController : MonoBehaviour
 {
     // 横移動スピード
-    [SerializeField] private float moveSpeed = 3;
+    [SerializeField] private float moveSpeed = 5;
 
     // ジャンプ力
     [SerializeField] private float jumpPower = 5;
@@ -38,24 +38,28 @@ public class testController : MonoBehaviour
         // →キーで右移動
         if (Keyboard.current.rightArrowKey.isPressed)
         {
+            transform.position = new Vector3(moveVelocity.x, -1, moveVelocity.z);
             moveVelocity.x += moveSpeed;
         }
 
         // ←キーで左移動
         if (Keyboard.current.leftArrowKey.isPressed)
         {
+            transform.position = new Vector3(moveVelocity.x, -1, moveVelocity.z);
             moveVelocity.x -= moveSpeed;
         }
 
         // ↑キーで前進
         if (Keyboard.current.upArrowKey.isPressed)
         {
+            transform.position = new Vector3(moveVelocity.x, -1, moveVelocity.z);
             moveVelocity.z += moveSpeed;
         }
 
         // ↓キーで後退
         if (Keyboard.current.downArrowKey.isPressed)
         {
+            transform.position = new Vector3(moveVelocity.x, -1, moveVelocity.z);
             moveVelocity.z -= moveSpeed;
         }
 
