@@ -29,7 +29,7 @@ public class testController : MonoBehaviour
         // 馬の子オブジェクトにあるAnimatorコンポーネントを取得
         animator = GetComponentInChildren<Animator>();
 
-        // 溜めるジャンプのコルーチン
+        // 溜めるジャンプのコルーチン    先生のサイトを参考
         StartCoroutine(ChargeJumpCoroutine());
     }
 
@@ -64,12 +64,10 @@ public class testController : MonoBehaviour
             moveSpeed = 5;
         }
 
-
         // Sと↓キーで止まる
         if (Keyboard.current.downArrowKey.isPressed || Keyboard.current.sKey.isPressed)
         {
             moveVelocity.z -= moveSpeed;
-            // Debug.Log("溜めるジャンプ");
         }
 
         // 地面に接しているか
@@ -97,7 +95,7 @@ public class testController : MonoBehaviour
 
     IEnumerator ChargeJumpCoroutine()
     {
-        while (true)
+        while (true)    // ChatGPT協力
         {
             // Sか↓キーが押されている間は続く
             if (Keyboard.current.downArrowKey.isPressed ||
