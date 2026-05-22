@@ -50,8 +50,15 @@ public class testController : MonoBehaviour
         }
 
 
-        // Wと↑キー
-        // if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.wKey.isPressed)
+        // Wと↑キーで加速させる
+        if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.wKey.isPressed)
+        {
+            moveSpeed = 12.5f;
+        }
+        else
+        {
+            moveSpeed = 5;
+        }
 
 
         // Sと↓キーで止まる
@@ -66,7 +73,6 @@ public class testController : MonoBehaviour
             // キー入力を離したらジャンプ！
             if (Keyboard.current.downArrowKey.wasReleasedThisFrame || Keyboard.current.sKey.wasReleasedThisFrame)
             {
-                // ジャンプ
                 moveVelocity.y = jumpPower;
             }
         }
@@ -75,23 +81,6 @@ public class testController : MonoBehaviour
             // 重力を加算（空中）
             moveVelocity.y += Physics.gravity.y * Time.deltaTime;
         }
-
-        /*
-        // 地面に接触しているか
-        if (characterController.isGrounded)
-        {
-            // スペースキーでジャンプ
-            if (Keyboard.current.spaceKey.wasPressedThisFrame)
-            {
-                moveVelocity.y = jumpPower;
-            }
-        }
-        else
-        {
-            // 重力を加算（空中）
-            moveVelocity.y += Physics.gravity.y * Time.deltaTime;
-        }
-        */
 
         // キャラクター移動
         characterController.Move(moveVelocity * Time.deltaTime);
