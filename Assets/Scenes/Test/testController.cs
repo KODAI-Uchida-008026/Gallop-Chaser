@@ -31,37 +31,37 @@ public class testController : MonoBehaviour
 
     void Update()
     {
-        // 毎フレーム 横・前後移動をリセット
+        // 毎フレーム 横移動をリセット
         moveVelocity.x = 0f;
-        moveVelocity.z = 0f;
+
+        // 前に自動で進ませる
+        moveVelocity.z = moveSpeed;
 
         // →キーで右移動
         if (Keyboard.current.rightArrowKey.isPressed)
         {
-            transform.position = new Vector3(moveVelocity.x, -1, moveVelocity.z);
             moveVelocity.x += moveSpeed;
         }
 
         // ←キーで左移動
         if (Keyboard.current.leftArrowKey.isPressed)
         {
-            transform.position = new Vector3(moveVelocity.x, -1, moveVelocity.z);
             moveVelocity.x -= moveSpeed;
         }
 
+        /*
         // ↑キーで前進
         if (Keyboard.current.upArrowKey.isPressed)
         {
-            transform.position = new Vector3(moveVelocity.x, -1, moveVelocity.z);
             moveVelocity.z += moveSpeed;
         }
 
         // ↓キーで後退
         if (Keyboard.current.downArrowKey.isPressed)
         {
-            transform.position = new Vector3(moveVelocity.x, -1, moveVelocity.z);
             moveVelocity.z -= moveSpeed;
         }
+        */
 
         // 地面に接触しているか
         if (characterController.isGrounded)
