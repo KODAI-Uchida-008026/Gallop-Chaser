@@ -37,32 +37,46 @@ public class testController : MonoBehaviour
         // 前に自動で進ませる
         moveVelocity.z = moveSpeed;
 
-        // →キーで右移動
-        if (Keyboard.current.rightArrowKey.isPressed)
+        // Dと→キーで右移動
+        if (Keyboard.current.rightArrowKey.isPressed || Keyboard.current.dKey.isPressed)
         {
             moveVelocity.x += moveSpeed;
         }
 
-        // ←キーで左移動
-        if (Keyboard.current.leftArrowKey.isPressed)
+        // Aと←キーで左移動
+        if (Keyboard.current.leftArrowKey.isPressed || Keyboard.current.aKey.isPressed)
         {
             moveVelocity.x -= moveSpeed;
         }
 
-        /*
-        // ↑キーで前進
-        if (Keyboard.current.upArrowKey.isPressed)
-        {
-            moveVelocity.z += moveSpeed;
-        }
 
-        // ↓キーで後退
-        if (Keyboard.current.downArrowKey.isPressed)
+        // Wと↑キー
+        // if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.wKey.isPressed)
+
+
+        // Sと↓キーで止まる
+        if (Keyboard.current.downArrowKey.isPressed || Keyboard.current.sKey.isPressed)
         {
             moveVelocity.z -= moveSpeed;
         }
-        */
 
+        // 地面に接しているか
+        if (characterController.isGrounded)
+        {
+            // キー入力を離したらジャンプ！
+            if (Keyboard.current.downArrowKey.wasReleasedThisFrame || Keyboard.current.sKey.wasReleasedThisFrame)
+            {
+                // ジャンプ
+                moveVelocity.y = jumpPower;
+            }
+        }
+        else
+        {
+            // 重力を加算（空中）
+            moveVelocity.y += Physics.gravity.y * Time.deltaTime;
+        }
+
+        /*
         // 地面に接触しているか
         if (characterController.isGrounded)
         {
@@ -77,6 +91,7 @@ public class testController : MonoBehaviour
             // 重力を加算（空中）
             moveVelocity.y += Physics.gravity.y * Time.deltaTime;
         }
+        */
 
         // キャラクター移動
         characterController.Move(moveVelocity * Time.deltaTime);
