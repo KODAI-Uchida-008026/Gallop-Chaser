@@ -589,6 +589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 352839301}
   - component: {fileID: 352839302}
+  - component: {fileID: 352839303}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -668,6 +669,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &352839303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352839300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0155a2942c116341ab04a64646bbb67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HpSlider
+  pc: {fileID: 452348108}
+  hp: {fileID: 352839302}
 --- !u!1 &452348102 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5352096220424634454, guid: 7b74409967c03ed43a5f87aa026fc295, type: 3}
@@ -687,6 +702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::testPController
   moveSpeed: 5
   jumpPower: 5
+  chargeTime: 0
 --- !u!143 &452348111
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1062,7 +1078,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5352096220424634455, guid: 7b74409967c03ed43a5f87aa026fc295, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5352096220424634455, guid: 7b74409967c03ed43a5f87aa026fc295, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1354,7 +1370,7 @@ Transform:
   m_GameObject: {fileID: 961739749}
   serializedVersion: 2
   m_LocalRotation: {x: 0.11806718, y: -0.0000000020123947, z: 2.3927135e-10, w: 0.99300563}
-  m_LocalPosition: {x: 0, y: 4, z: -25}
+  m_LocalPosition: {x: 0, y: 3, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1622,7 +1638,7 @@ Transform:
   m_GameObject: {fileID: 1399448098}
   serializedVersion: 2
   m_LocalRotation: {x: 0.11806719, y: -0.0000000020123947, z: 2.392714e-10, w: 0.99300563}
-  m_LocalPosition: {x: 0, y: 4, z: -25}
+  m_LocalPosition: {x: 0, y: 3, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -4,10 +4,10 @@ using UnityEngine.InputSystem;
 
 // CharacterController が必須になる
 [RequireComponent(typeof(CharacterController))]
-public class testController : MonoBehaviour
+public class PrayerController : MonoBehaviour
 {
-    // 横移動スピード
-    [SerializeField] private float moveSpeed = 5;
+    // 移動スピード
+    [SerializeField] public float moveSpeed = 5;
 
     // ジャンプ力
     [SerializeField] private float jumpPower = 5;
@@ -20,6 +20,9 @@ public class testController : MonoBehaviour
 
     // 移動速度を保存する変数
     private Vector3 moveVelocity;
+
+    // 溜めるジャンプの変数
+    public float chargeTime = 0f;
 
     void Start()
     {
@@ -52,7 +55,6 @@ public class testController : MonoBehaviour
         {
             moveVelocity.x -= moveSpeed;
         }
-
 
         // Wと↑キーで加速させる
         if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.wKey.isPressed)
@@ -101,7 +103,7 @@ public class testController : MonoBehaviour
             if (Keyboard.current.downArrowKey.isPressed ||
                 Keyboard.current.sKey.isPressed)
             {
-                // ここだけの変数
+                // 再起動させる
                 float chargeTime = 0f;
 
                 // 押している間チャージ
