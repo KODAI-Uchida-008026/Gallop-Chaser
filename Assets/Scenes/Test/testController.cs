@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -27,6 +28,9 @@ public class testController : MonoBehaviour
 
         // 馬の子オブジェクトにあるAnimatorコンポーネントを取得
         animator = GetComponentInChildren<Animator>();
+
+        // 溜めるジャンプのコルーチン
+        StartCoroutine(ChargeJumpCoroutine());
     }
 
     void Update()
@@ -53,7 +57,7 @@ public class testController : MonoBehaviour
         // Wと↑キーで加速させる
         if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.wKey.isPressed)
         {
-            moveSpeed = 12.5f;
+            moveSpeed = 13f;
         }
         else
         {
@@ -65,12 +69,13 @@ public class testController : MonoBehaviour
         if (Keyboard.current.downArrowKey.isPressed || Keyboard.current.sKey.isPressed)
         {
             moveVelocity.z -= moveSpeed;
+            // Debug.Log("溜めるジャンプ");
         }
 
         // 地面に接しているか
         if (characterController.isGrounded)
         {
-            // キー入力を離したらジャンプ！
+            // キー入力を離したらジャンプ
             if (Keyboard.current.downArrowKey.wasReleasedThisFrame || Keyboard.current.sKey.wasReleasedThisFrame)
             {
                 moveVelocity.y = jumpPower;
@@ -88,5 +93,52 @@ public class testController : MonoBehaviour
         // アニメーター
         animator.SetFloat("JumpPower", moveVelocity.y);
         animator.SetFloat("MoveSpeed", new Vector2(moveVelocity.x, moveVelocity.z).magnitude);
+    }
+
+    IEnumerator ChargeJumpCoroutine()
+    {
+        while (true)
+        {
+            // Sか↓キーが押されている間は続く
+            if (Keyboard.current.downArrowKey.isPressed ||
+                Keyboard.current.sKey.isPressed)
+            {
+                // ここだけの変数
+                float chargeTime = 0f;
+
+                // 押している間チャージ
+                while (Keyboard.current.downArrowKey.isPressed ||
+                       Keyboard.current.sKey.isPressed)
+                {
+                    chargeTime += Time.deltaTime;
+
+                    // 段階ごとのジャンプ力
+                    if (chargeTime >= 2.5f)
+                    {
+                        jumpPower = 7f;
+                        Debug.Log("大ジャンプ");
+                    }
+                    else if (chargeTime >= 1.5f)
+                    {
+                        jumpPower = 6f;
+                        Debug.Log("中ジャンプ");
+                    }
+                    else
+                    {
+                        jumpPower = 5f;
+                        Debug.Log("小ジャンプ");
+                    }
+
+                    yield return null;
+                }
+
+                // 離したら戻す
+                jumpPower = 5f;
+                Debug.Log("再開");
+            }
+
+            // 1フレーム待って終了
+            yield return null;
+        }
     }
 }
