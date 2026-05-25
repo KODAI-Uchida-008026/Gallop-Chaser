@@ -7,10 +7,10 @@ using UnityEngine.InputSystem;
 public class PrayerController : MonoBehaviour
 {
     // 移動スピード
-    [SerializeField] public float moveSpeed = 5;
+    [SerializeField] public float moveSpeed = 5f;
 
     // ジャンプ力
-    [SerializeField] private float jumpPower = 5;
+    [SerializeField] private float jumpPower;
 
     // CharacterController の参照
     private CharacterController characterController;
@@ -22,7 +22,7 @@ public class PrayerController : MonoBehaviour
     private Vector3 moveVelocity;
 
     // 溜めるジャンプの変数
-    public float chargeTime = 0f;
+    public float chargeTime;
 
     void Start()
     {
@@ -63,7 +63,7 @@ public class PrayerController : MonoBehaviour
         }
         else
         {
-            moveSpeed = 5;
+            moveSpeed = 5f;
         }
 
         // Sと↓キーで止まる
@@ -95,7 +95,7 @@ public class PrayerController : MonoBehaviour
         animator.SetFloat("MoveSpeed", new Vector2(moveVelocity.x, moveVelocity.z).magnitude);
     }
 
-    IEnumerator ChargeJumpCoroutine()
+    public IEnumerator ChargeJumpCoroutine()
     {
         while (true)    // ChatGPT協力
         {
@@ -104,7 +104,7 @@ public class PrayerController : MonoBehaviour
                 Keyboard.current.sKey.isPressed)
             {
                 // 再起動させる
-                float chargeTime = 0f;
+                chargeTime = 0f;
 
                 // 押している間チャージ
                 while (Keyboard.current.downArrowKey.isPressed ||
