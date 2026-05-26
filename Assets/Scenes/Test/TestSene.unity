@@ -700,7 +700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1466e6f61ea61df4498509298ba0cc8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::testPController
-  moveSpeed: 5
+  moveSpeed: 0
   jumpPower: 0
   chargeTime: 0
 --- !u!143 &452348111

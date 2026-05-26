@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PrayerController : MonoBehaviour
 {
     // 移動スピード
-    [SerializeField] public float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed;
 
     // ジャンプ力
     [SerializeField] private float jumpPower;
@@ -23,6 +23,12 @@ public class PrayerController : MonoBehaviour
 
     // 溜めるジャンプの変数
     public float chargeTime;
+
+    // 減速配置
+    private bool isSlow;
+
+    // 加速判定
+    private bool isFast;
 
     void Start()
     {
@@ -44,6 +50,20 @@ public class PrayerController : MonoBehaviour
         // 前に自動で進ませる
         moveVelocity.z = moveSpeed;
 
+        // 速度判定
+        if (isSlow)
+        {
+            moveSpeed = 2.5f;
+        }
+        else if (isFast)
+        {
+            moveSpeed = 13f;
+        }
+        else
+        {
+            moveSpeed = 5f;
+        }
+
         // Dと→キーで右移動
         if (Keyboard.current.rightArrowKey.isPressed || Keyboard.current.dKey.isPressed)
         {
@@ -59,17 +79,19 @@ public class PrayerController : MonoBehaviour
         // Wと↑キーで加速させる
         if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.wKey.isPressed)
         {
-            moveSpeed = 13f;
+            fastCheck(true);
         }
         else
         {
-            moveSpeed = 5f;
+            fastCheck(false);
         }
+
 
         // Sと↓キーで止まる
         if (Keyboard.current.downArrowKey.isPressed || Keyboard.current.sKey.isPressed)
         {
-            moveVelocity.z -= moveSpeed + 0.3f;
+            // 通常は勢いがあるため少しだけ後退させる
+            isCharge(true);
         }
 
         // 地面に接しているか
@@ -95,14 +117,32 @@ public class PrayerController : MonoBehaviour
         animator.SetFloat("MoveSpeed", new Vector2(moveVelocity.x, moveVelocity.z).magnitude);
     }
 
-    public void isStop()
+    // 溜めるジャンプ
+    public void isCharge(bool stop)
     {
-        moveVelocity.z -= moveSpeed;
+        // 停止判定
+        if (stop)
+        {
+            // 通常は勢いがあるため少しだけ後退させる
+            moveVelocity.z -= moveSpeed + 0.3f;
+        }
+        else
+        {
+            // 減速中は完全に停止させる
+            moveVelocity.z *= 0f;
+        }
     }
 
-    public void isSlow()
+    // 減速判定
+    public void slowCheck(bool slow)
     {
-        moveSpeed = 2.5f;
+        isSlow = slow;
+    }
+
+    // 加速判定
+    public void fastCheck(bool fast)
+    {
+        isFast = fast;
     }
 
     public IEnumerator ChargeJumpCoroutine()

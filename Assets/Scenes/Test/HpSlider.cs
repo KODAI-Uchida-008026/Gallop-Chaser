@@ -13,6 +13,15 @@ public class HpSlider : MonoBehaviour
     // 現在のHP
     float currentHp;
 
+    // 回復判定
+    private bool isRefresh;
+
+    // 襲歩判定
+    private bool isGallop;
+
+    // 体力が15%を切ると20%を超えるまで減速
+    private bool isDanger;
+
     void Start()
     {
         //SliderをMAXにする
@@ -26,8 +35,34 @@ public class HpSlider : MonoBehaviour
 
     void Update()
     {
-        // ほんの少しずつ体力回復
-        currentHp += Time.deltaTime * 0.01f;
+        // 体力の上限・下限
+        if (currentHp >= 1)
+        {
+            currentHp = 1;
+        }
+        else if (currentHp < 0)
+        {
+            currentHp = 0;
+        }
+
+
+        // 体力回復・体力減少
+        if (isGallop)
+        {
+            // 加速で体力減少
+            currentHp -= Time.deltaTime * 0.05f;
+        }
+        else if (isRefresh)
+        {
+            // 20%以下なら多めに回復
+            currentHp += Time.deltaTime * 0.02f;
+        }
+        else
+        {
+            // ほんの少しずつ体力回復
+            currentHp += Time.deltaTime * 0.01f;
+        }
+
 
         // キー入力を離したらジャンプ判定
         if (Keyboard.current.downArrowKey.wasReleasedThisFrame || Keyboard.current.sKey.wasReleasedThisFrame)
@@ -59,41 +94,81 @@ public class HpSlider : MonoBehaviour
             }
         }
 
-        // 体力ゲージが15%以下であれば減速する
-        if (currentHp <= 0.15)
+
+        // 加速で体力減少
+        if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.wKey.isPressed)
         {
-            pc.isSlow();
-            Debug.Log("体力が少ないので減速します...");
+            isGallop = true;
+
+
+            // 1秒ごとに10%減少していく
+            // currentHp -= Time.deltaTime * 0.05f;
+            // Debug.Log("加速で体力減少");
         }
         else
         {
-            // 加速で体力減少
-            if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.wKey.isPressed)
-            {
-                // 1秒ごとに10%減少していく
-                currentHp -= Time.deltaTime * 0.05f;
-                Debug.Log("加速で体力減少");
-            }
+            isGallop = false;
         }
 
-        // 20%以下なら多めに回復
-        if (currentHp <= 0.20)
+
+        // 体力ゲージが15%を下回ると疲労判定
+        if (currentHp <= 0.15)
         {
-            currentHp += Time.deltaTime * 0.025f;
+            isDanger = true;
+
+            // pc.slowCheck(true);
+            // Debug.Log("体力が少ないので減速します...");
+        }
+
+
+        // 減少してから20%を超えれば復活
+        if (currentHp > 0.20)
+        {
+            // 疲労判定
+            isDanger = false;
+
+            // 回復判定
+            isRefresh = false;
+
+
+            // currentHp += Time.deltaTime * 0.02f;
 
             // 減少すると加速ができない
             if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.wKey.isPressed)
             {
-                pc.isSlow();
-                Debug.Log("今は加速できません");
+                // pc.fastCheck(false);
+                // Debug.Log("今は加速できません");
             }
 
             // 減少に応じて停止のパワーを変える
             if (Keyboard.current.downArrowKey.isPressed || Keyboard.current.sKey.isPressed)
             {
-                pc.isSlow();
-                pc.isStop();
-                Debug.Log("停止");
+                // pc.isCharge(false);
+                // Debug.Log("停止");
+            }
+        }
+
+        // 疲労判定
+        if (isDanger)
+        {
+            // 体力ゲージが15%以下であれば減速する
+            pc.slowCheck(true);
+            Debug.Log("体力が少ないので減速します...");
+
+            // 20%以下なら多めに回復
+            isRefresh = true;
+
+            // 減少すると加速ができない
+            pc.fastCheck(false);
+            isGallop = false;
+            Debug.Log("今は加速できません");
+
+            // Sと↓キーで止まる
+            if (Keyboard.current.downArrowKey.isPressed || Keyboard.current.sKey.isPressed)
+            {
+                // 勢いが無いため完全停止
+                pc.isCharge(false);
+                Debug.Log("完全停止");
             }
         }
 
