@@ -62,21 +62,8 @@ public class HpSlider : MonoBehaviour
         // 体力ゲージが15%以下であれば減速する
         if (currentHp <= 0.15)
         {
-            pc.moveSpeed = 2.5f;
+            pc.isSlow();
             Debug.Log("体力が少ないので減速します...");
-
-            // 20%以下なら多めに回復
-            if (currentHp <= 0.20)
-            {
-                currentHp += Time.deltaTime * 0.025f;
-
-                // 減少すると加速ができない
-                if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.wKey.isPressed)
-                {
-                    pc.moveSpeed = 2.5f;
-                    Debug.Log("今は加速できません");
-                }
-            }
         }
         else
         {
@@ -86,6 +73,27 @@ public class HpSlider : MonoBehaviour
                 // 1秒ごとに10%減少していく
                 currentHp -= Time.deltaTime * 0.05f;
                 Debug.Log("加速で体力減少");
+            }
+        }
+
+        // 20%以下なら多めに回復
+        if (currentHp <= 0.20)
+        {
+            currentHp += Time.deltaTime * 0.025f;
+
+            // 減少すると加速ができない
+            if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.wKey.isPressed)
+            {
+                pc.isSlow();
+                Debug.Log("今は加速できません");
+            }
+
+            // 減少に応じて停止のパワーを変える
+            if (Keyboard.current.downArrowKey.isPressed || Keyboard.current.sKey.isPressed)
+            {
+                pc.isSlow();
+                pc.isStop();
+                Debug.Log("停止");
             }
         }
 

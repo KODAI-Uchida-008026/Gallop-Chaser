@@ -69,7 +69,7 @@ public class PrayerController : MonoBehaviour
         // Sと↓キーで止まる
         if (Keyboard.current.downArrowKey.isPressed || Keyboard.current.sKey.isPressed)
         {
-            moveVelocity.z -= moveSpeed;
+            moveVelocity.z -= moveSpeed + 0.3f;
         }
 
         // 地面に接しているか
@@ -93,6 +93,16 @@ public class PrayerController : MonoBehaviour
         // アニメーター
         animator.SetFloat("JumpPower", moveVelocity.y);
         animator.SetFloat("MoveSpeed", new Vector2(moveVelocity.x, moveVelocity.z).magnitude);
+    }
+
+    public void isStop()
+    {
+        moveVelocity.z -= moveSpeed;
+    }
+
+    public void isSlow()
+    {
+        moveSpeed = 2.5f;
     }
 
     public IEnumerator ChargeJumpCoroutine()
