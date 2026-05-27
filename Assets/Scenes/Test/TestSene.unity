@@ -448,7 +448,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 52ec68c58f686894cb016a4e918b8b3a, type: 2}
+  - {fileID: 2100000, guid: 26eb0617de86d3748bee69eec3cc5646, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -508,11 +508,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 177270022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a095db22ad1b3604fab853c74be2405a, type: 3}
+  m_Script: {fileID: 11500000, guid: 73af3a532b0c50249be6e82fac2d6869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneDirector
-  goal: {fileID: 0}
-  characterController: {fileID: 452348111}
+  characterController: {fileID: 0}
 --- !u!1 &203844586
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,7 +1196,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1080863099fbd4f4baa303c143fe1cd5, type: 2}
+  - {fileID: 2100000, guid: dabbdc03ce0f19e44bba33bd9e770ecd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2031,7 +2030,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1080863099fbd4f4baa303c143fe1cd5, type: 2}
+  - {fileID: 2100000, guid: 4c3acc4b78dc6cd4f848294d116fb7f7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
