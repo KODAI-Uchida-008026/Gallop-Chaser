@@ -20,7 +20,7 @@ public class HpSlider : MonoBehaviour
     private bool isGallop;
 
     // 体力が15%を切ると20%を超えるまで減速
-    private bool isDanger;
+    public bool isDanger;
 
     void Start()
     {
@@ -45,7 +45,6 @@ public class HpSlider : MonoBehaviour
             currentHp = 0;
         }
 
-
         // 体力回復・体力減少
         if (isGallop)
         {
@@ -62,7 +61,6 @@ public class HpSlider : MonoBehaviour
             // ほんの少しずつ体力回復
             currentHp += Time.deltaTime * 0.01f;
         }
-
 
         // キー入力を離したらジャンプ判定
         if (Keyboard.current.downArrowKey.wasReleasedThisFrame || Keyboard.current.sKey.wasReleasedThisFrame)
@@ -94,32 +92,21 @@ public class HpSlider : MonoBehaviour
             }
         }
 
-
         // 加速で体力減少
         if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.wKey.isPressed)
         {
             isGallop = true;
-
-
-            // 1秒ごとに10%減少していく
-            // currentHp -= Time.deltaTime * 0.05f;
-            // Debug.Log("加速で体力減少");
         }
         else
         {
             isGallop = false;
         }
 
-
         // 体力ゲージが15%を下回ると疲労判定
         if (currentHp <= 0.15)
         {
             isDanger = true;
-
-            // pc.slowCheck(true);
-            // Debug.Log("体力が少ないので減速します...");
         }
-
 
         // 減少してから20%を超えれば復活
         if (currentHp > 0.20)
@@ -129,23 +116,6 @@ public class HpSlider : MonoBehaviour
 
             // 回復判定
             isRefresh = false;
-
-
-            // currentHp += Time.deltaTime * 0.02f;
-
-            // 減少すると加速ができない
-            if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.wKey.isPressed)
-            {
-                // pc.fastCheck(false);
-                // Debug.Log("今は加速できません");
-            }
-
-            // 減少に応じて停止のパワーを変える
-            if (Keyboard.current.downArrowKey.isPressed || Keyboard.current.sKey.isPressed)
-            {
-                // pc.isCharge(false);
-                // Debug.Log("停止");
-            }
         }
 
         // 疲労判定
@@ -162,14 +132,6 @@ public class HpSlider : MonoBehaviour
             pc.fastCheck(false);
             isGallop = false;
             Debug.Log("今は加速できません");
-
-            // Sと↓キーで止まる
-            if (Keyboard.current.downArrowKey.isPressed || Keyboard.current.sKey.isPressed)
-            {
-                // 勢いが無いため完全停止
-                pc.isCharge(false);
-                Debug.Log("完全停止");
-            }
         }
 
         // 更新してスライダーに反映

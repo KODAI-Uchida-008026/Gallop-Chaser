@@ -24,11 +24,14 @@ public class PrayerController : MonoBehaviour
     // 溜めるジャンプの変数
     public float chargeTime;
 
-    // 減速配置
+    // 減速判定
     private bool isSlow;
 
     // 加速判定
     private bool isFast;
+
+    // HPスライダースクリプトの取得
+    [SerializeField] private HpSlider slider;
 
     void Start()
     {
@@ -90,8 +93,18 @@ public class PrayerController : MonoBehaviour
         // Sと↓キーで止まる
         if (Keyboard.current.downArrowKey.isPressed || Keyboard.current.sKey.isPressed)
         {
-            // 通常は勢いがあるため少しだけ後退させる
-            isCharge(true);
+            // 体力が少ない場合
+            if (slider.isDanger)
+            {
+                // 勢いが無いため完全停止
+                moveVelocity.z = 0f;
+                Debug.Log("完全停止");
+            }
+            else
+            {
+                // 通常は勢いがあるため少しだけ後退させる
+                moveVelocity.z -= moveSpeed + 0.3f;
+            }
         }
 
         // 地面に接しているか
@@ -117,22 +130,6 @@ public class PrayerController : MonoBehaviour
         animator.SetFloat("MoveSpeed", new Vector2(moveVelocity.x, moveVelocity.z).magnitude);
     }
 
-    // 溜めるジャンプ
-    public void isCharge(bool stop)
-    {
-        // 停止判定
-        if (stop)
-        {
-            // 通常は勢いがあるため少しだけ後退させる
-            moveVelocity.z -= moveSpeed + 0.3f;
-        }
-        else
-        {
-            // 減速中は完全に停止させる
-            moveVelocity.z *= 0f;
-        }
-    }
-
     // 減速判定
     public void slowCheck(bool slow)
     {
@@ -144,6 +141,7 @@ public class PrayerController : MonoBehaviour
     {
         isFast = fast;
     }
+
 
     public IEnumerator ChargeJumpCoroutine()
     {

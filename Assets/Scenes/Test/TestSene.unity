@@ -683,6 +683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HpSlider
   pc: {fileID: 452348108}
   hp: {fileID: 352839302}
+  isDanger: 0
 --- !u!1 &452348102 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5352096220424634454, guid: 7b74409967c03ed43a5f87aa026fc295, type: 3}
@@ -703,6 +704,7 @@ MonoBehaviour:
   moveSpeed: 0
   jumpPower: 0
   chargeTime: 0
+  slider: {fileID: 352839303}
 --- !u!143 &452348111
 CharacterController:
   m_ObjectHideFlags: 0
