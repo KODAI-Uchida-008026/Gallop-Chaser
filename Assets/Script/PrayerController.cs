@@ -89,7 +89,6 @@ public class PrayerController : MonoBehaviour
             fastCheck(false);
         }
 
-
         // Sと↓キーで止まる
         if (Keyboard.current.downArrowKey.isPressed || Keyboard.current.sKey.isPressed)
         {
@@ -103,7 +102,7 @@ public class PrayerController : MonoBehaviour
             else
             {
                 // 通常は勢いがあるため少しだけ後退させる
-                moveVelocity.z -= moveSpeed + 0.35f;
+                moveVelocity.z -= moveSpeed + 0.4f;
             }
         }
 
@@ -141,7 +140,6 @@ public class PrayerController : MonoBehaviour
     {
         isFast = fast;
     }
-
 
     public IEnumerator ChargeJumpCoroutine()
     {

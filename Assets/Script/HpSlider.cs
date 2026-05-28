@@ -29,7 +29,6 @@ public class HpSlider : MonoBehaviour
 
         //現在のHPを最大HPと同じにする
         currentHp = hp.value;
-
         // Debug.Log("Start currentHp : " + currentHp);
     }
 
