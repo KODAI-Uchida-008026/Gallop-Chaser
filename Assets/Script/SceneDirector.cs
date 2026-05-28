@@ -3,17 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneDirector : MonoBehaviour
 {
-    GameObject goal;
-    [SerializeField] private CharacterController characterController;
+    // [SerializeField] private CharacterController characterController;
 
-    private void Start()
+    void OnTriggerEnter(Collider other)
     {
-        goal = GameObject.Find("GoalLine");
-        characterController = GetComponent<CharacterController>();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        SceneManager.LoadScene("MainScene");
+        if (other.CompareTag("Player"))
+        {
+            SceneManager.LoadScene("MainScene");
+        }
     }
 }

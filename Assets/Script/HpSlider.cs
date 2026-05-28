@@ -30,7 +30,7 @@ public class HpSlider : MonoBehaviour
         //現在のHPを最大HPと同じにする
         currentHp = hp.value;
 
-        Debug.Log("Start currentHp : " + currentHp);
+        // Debug.Log("Start currentHp : " + currentHp);
     }
 
     void Update()
@@ -70,32 +70,42 @@ public class HpSlider : MonoBehaviour
             {
                 // 溜め過ぎると50%の減少
                 currentHp -= 0.5f;
-                Debug.Log("溜め過ぎると50%の減少");
+                // Debug.Log("溜め過ぎると50%の減少");
             }
             else if (pc.chargeTime >= 2.5f)
             {
                 // 大ジャンプ 25%の減少
                 currentHp -= 0.25f;
-                Debug.Log("大ジャンプ 25% 減少");
+                // Debug.Log("大ジャンプ 25% 減少");
             }
             else if (pc.chargeTime >= 1.5f)
             {
                 // 中ジャンプ 15%の減少
                 currentHp -= 0.15f;
-                Debug.Log("中ジャンプ 15% 減少");
+                // Debug.Log("中ジャンプ 15% 減少");
             }
             else
             {
                 // 小ジャンプ 10%の減少
                 currentHp -= 0.1f;
-                Debug.Log("小ジャンプ 10% 減少");
+                // Debug.Log("小ジャンプ 10% 減少");
             }
         }
 
         // 加速で体力減少
         if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.wKey.isPressed)
         {
-            isGallop = true;
+            // 減少すると加速ができない
+            if (isDanger)
+            {
+                pc.fastCheck(false);
+                isGallop = false;
+                // Debug.Log("今は加速できません");
+            }
+            else
+            {
+                isGallop = true;
+            }
         }
         else
         {
@@ -123,15 +133,10 @@ public class HpSlider : MonoBehaviour
         {
             // 体力ゲージが15%以下であれば減速する
             pc.slowCheck(true);
-            Debug.Log("体力が少ないので減速します...");
+            // Debug.Log("体力が少ないので減速します...");
 
             // 20%以下なら多めに回復
             isRefresh = true;
-
-            // 減少すると加速ができない
-            pc.fastCheck(false);
-            isGallop = false;
-            Debug.Log("今は加速できません");
         }
 
         // 更新してスライダーに反映

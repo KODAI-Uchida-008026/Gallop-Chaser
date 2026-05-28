@@ -98,12 +98,12 @@ public class PrayerController : MonoBehaviour
             {
                 // 勢いが無いため完全停止
                 moveVelocity.z = 0f;
-                Debug.Log("完全停止");
+                // Debug.Log("完全停止");
             }
             else
             {
                 // 通常は勢いがあるため少しだけ後退させる
-                moveVelocity.z -= moveSpeed + 0.3f;
+                moveVelocity.z -= moveSpeed + 0.35f;
             }
         }
 
@@ -182,7 +182,7 @@ public class PrayerController : MonoBehaviour
 
                 // 離したら戻す
                 jumpPower = 5f;
-                Debug.Log("再開");
+                // Debug.Log("再開");
             }
 
             // 1フレーム待って終了
