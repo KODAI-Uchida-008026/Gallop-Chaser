@@ -7,11 +7,11 @@ public class SceneDirector : MonoBehaviour
     {
         if (other.CompareTag("Next"))
         {
-            SceneManager.LoadScene("TestScene");
+            SceneManager.LoadScene("GameScene");
         }
         else if (other.CompareTag("Finish"))
         {
-            SceneManager.LoadScene("MainScene");
+            SceneManager.LoadScene("ResultScene");
         }
     }
 }

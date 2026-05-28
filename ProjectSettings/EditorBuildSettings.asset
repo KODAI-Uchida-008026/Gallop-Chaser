@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/PracticeScene.unity
     guid: 4e91cbdb1e2dde9429c8962a6a55d6ff
   - enabled: 1
-    path: Assets/Scenes/TestScene.unity
+    path: Assets/Scenes/GameScene.unity
     guid: 472eab1edaed21a49853fa8c0025d049
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
+    path: Assets/Scenes/TitleScene.unity
     guid: dd38cc4e37155de44a5e95cbf7ead994
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
