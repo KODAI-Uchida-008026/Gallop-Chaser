@@ -7,7 +7,7 @@ public class TimeDirector : MonoBehaviour
     GameObject Timer;
 
     // 時間
-    float time = 0.0f;
+    public float time = 0.0f;
 
     void Start()
     {
