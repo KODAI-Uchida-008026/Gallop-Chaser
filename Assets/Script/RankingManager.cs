@@ -6,21 +6,6 @@ public class RankingManager : MonoBehaviour
     // タイトル
     public TextMeshProUGUI Title;
 
-    // 1位
-    // public TextMeshProUGUI First;
-
-    // 2位
-    // public TextMeshProUGUI Second;
-
-    // 3位
-    // public TextMeshProUGUI Third;
-
-    // 4位
-    // public TextMeshProUGUI Fourth;
-
-    // 5位
-    // public TextMeshProUGUI Fifth;
-
     // プレイヤーの記録
     public TextMeshProUGUI Your;
 
@@ -30,6 +15,8 @@ public class RankingManager : MonoBehaviour
     // 5位までと最新記録に限定させるので配列でデータを管理
     float[] ranks = new float[6];
 
+    // 最新記録
+    float resultTime;
 
     void Start()
     {
@@ -42,10 +29,12 @@ public class RankingManager : MonoBehaviour
 
         // 今回の記録
         ranks[5] = PlayerPrefs.GetFloat("NewTime");
+        resultTime = ranks[5];
 
         // 並び替え
         System.Array.Sort(ranks);
 
+        // 表示
         for (int i = 0; i < 5; i++)
         {
             if (ranks[i] == 999)
@@ -58,14 +47,7 @@ public class RankingManager : MonoBehaviour
             }
         }
 
-        // 表示
-        // First.text = ranks[0].ToString("F1");
-        // Second.text = ranks[1].ToString("F1");
-        // Third.text = ranks[2].ToString("F1");
-        // Fourth.text = ranks[3].ToString("F1");
-        // Fifth.text = ranks[4].ToString("F1");
-
         // 今回の記録
-        Your.text = ranks[5].ToString("F1");
+        Your.text = resultTime.ToString("F1");
     }
 }
