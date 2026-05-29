@@ -103,11 +103,13 @@ public class HpSlider : MonoBehaviour
             }
             else
             {
+                pc.fastCheck(true);
                 isGallop = true;
             }
         }
         else
         {
+            pc.fastCheck(false);
             isGallop = false;
         }
 

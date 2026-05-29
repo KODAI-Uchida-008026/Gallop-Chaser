@@ -511,6 +511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73af3a532b0c50249be6e82fac2d6869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneDirector
+  timeDirector: {fileID: 0}
 --- !u!1 &203844586
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,6 +886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73af3a532b0c50249be6e82fac2d6869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneDirector
+  timeDirector: {fileID: 1966757139}
 --- !u!1 &468852435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,7 +1128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8641931888940490367, guid: e722836d1784ae0458b31602af51d2bd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 103
+      value: 98
       objectReference: {fileID: 0}
     - target: {fileID: 8641931888940490367, guid: e722836d1784ae0458b31602af51d2bd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2357,6 +2359,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e0b1ac9a895f13469d8dff86ef34c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeDirector
+  time: 0
+  newTime: 0
+  isPlaying: 0
 --- !u!1 &1992505076
 GameObject:
   m_ObjectHideFlags: 0
