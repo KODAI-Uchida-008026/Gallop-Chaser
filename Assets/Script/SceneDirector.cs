@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -27,6 +28,21 @@ public class SceneDirector : MonoBehaviour
 
             // リザルト画面へ
             SceneManager.LoadScene("ResultScene");
+        }
+    }
+
+    private void Start()
+    {
+        StartCoroutine(ReStartCoroutine());
+    }
+
+    IEnumerator ReStartCoroutine()
+    {
+        if (SceneManager.GetActiveScene().name == "ResultScene")
+        {
+            yield return new WaitForSeconds(10);
+            SceneManager.LoadScene("TitleScene");
+            Debug.Log("10秒経ってタイトルに戻る");
         }
     }
 }
