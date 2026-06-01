@@ -34,7 +34,7 @@ public class RankingManager : MonoBehaviour
         // 表示
         for (int i = 0; i < 5; i++)
         {
-            if (ranks[i] == 999 || ranks[i] == 00.0)
+            if (ranks[i] == 999)
             {
                 ranking[i].text = "-----";
             }

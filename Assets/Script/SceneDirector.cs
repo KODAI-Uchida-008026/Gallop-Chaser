@@ -6,6 +6,12 @@ public class SceneDirector : MonoBehaviour
     // タイムディレクターの参照
     [SerializeField] TimeDirector timeDirector;
 
+    public void GameStart()
+    {
+        // 練習シーンへ
+        SceneManager.LoadScene("PracticeScene");
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Next"))
