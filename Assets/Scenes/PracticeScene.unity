@@ -523,7 +523,6 @@ GameObject:
   - component: {fileID: 177270025}
   - component: {fileID: 177270024}
   - component: {fileID: 177270023}
-  - component: {fileID: 177270028}
   m_Layer: 0
   m_Name: winningPost
   m_TagString: Next
@@ -636,18 +635,6 @@ RectTransform:
   m_AnchoredPosition: {x: -8.47, y: 1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &177270028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 177270022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73af3a532b0c50249be6e82fac2d6869, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneDirector
 --- !u!1 &203844586
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,18 +1137,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5352096220424634455, guid: 7b74409967c03ed43a5f87aa026fc295, type: 3}
   m_PrefabInstance: {fileID: 780178202}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &452348114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452348102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73af3a532b0c50249be6e82fac2d6869, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneDirector
 --- !u!1 &468852435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1566,9 +1541,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5352096220424634454, guid: 7b74409967c03ed43a5f87aa026fc295, type: 3}
       insertIndex: -1
       addedObject: {fileID: 452348111}
-    - targetCorrespondingSourceObject: {fileID: 5352096220424634454, guid: 7b74409967c03ed43a5f87aa026fc295, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 452348114}
   m_SourcePrefab: {fileID: 100100000, guid: 7b74409967c03ed43a5f87aa026fc295, type: 3}
 --- !u!1 &915490479
 GameObject:
@@ -3129,6 +3101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeDirector
   time: 0
+  newTime: 0
+  isPlaying: 0
 --- !u!1 &1992505076
 GameObject:
   m_ObjectHideFlags: 0

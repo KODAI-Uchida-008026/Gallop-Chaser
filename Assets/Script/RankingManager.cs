@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class RankingManager : MonoBehaviour
 {
-    // タイトル
-    public TextMeshProUGUI Title;
-
     // プレイヤーの記録
     public TextMeshProUGUI Your;
 
@@ -37,9 +34,9 @@ public class RankingManager : MonoBehaviour
         // 表示
         for (int i = 0; i < 5; i++)
         {
-            if (ranks[i] == 999)
+            if (ranks[i] == 999 || ranks[i] == 00.0)
             {
-                ranking[i].text = "---";
+                ranking[i].text = "-----";
             }
             else
             {
