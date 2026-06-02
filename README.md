@@ -74,8 +74,9 @@
 | **Level 16** | 練習シーン |[x]|
 | **Level 17** | セーブデータとランキング |[x]|
 | **Level 18** | タイトルシーンとクリアシーン |[x]|
+| **Level 19** | BGM/SE |[x]|
 
-| **Level 19** | BGM/SE |  [ ]  |
+
 | **Level 20** | 最終確認 |  [ ]  |
 
 > ※ ゲーム内容に合わせて Level 0〜2 の定義を書き換えてください。
@@ -93,7 +94,7 @@
 - [x] UI（Canvas, Button, TextMeshPro）
 - [ ] ScriptableObject / JSONデータ
 - [ ] アニメーション / DOTween
-- [ ] サウンド（BGM・SE）
+- [x] サウンド（BGM・SE）
 - [ ] NavMesh / AI
 - [x] Timeline / Cinemachine
 - [x] 物理（Rigidbody / CharacterController 等）
@@ -117,7 +118,7 @@
 | 10日目 | 5/29（金）|セーブデータとランキング|先生のサイトとChatGPTを頼りに作成|表示まではいけた|
 | 11日目 | 6/1（月） |セーブデータとランキング・タイトルシーンとクリアシーン・タイトルに戻る|ゲーム本編は形になった|発表資料とBGM・SEをどうするか|
 
-| 12日目 | 6/2（火） | 音・発表準備 |発表資料はブラウザの共有ができなければ帰って作る| |
+| 12日目 | 6/2（火） | BGM・発表準備・最終調整 |発表資料はブラウザの共有ができなければ帰って作る| |
 | 13日目 | 6/3（水） | 例：発表会 | プレゼン＋作品公開 | |
 
 > ※ ゲーム規模に合わせて行の追加・削除をして構いません。
@@ -136,6 +137,7 @@
 | 5/28 |練習シーンの追加と見た目|明日はセーブデータとランキング|
 | 5/29 |セーブデータとランキング|まだ未完成　次回 完成させる|
 | 6/1 |セーブデータとランキングセーブデータとランキング・タイトルシーンとクリアシーン|ゲーム本編は形になった|
+| 6/2 |　　　　　　|　　　　|
 
 | ... | ... | ... |
 
@@ -190,10 +192,11 @@ Assets/
 ├─ Folder/ (SettingsやInputSystemを収納)
 ├─ HorsePack/ (使用アセットの追加フォルダをひとまとめに)
 ├─ Prefabs/
-├─ Scenes/GameScene/PracticeScene/ResultScene/TitleScene/Test/
-                                                        └─ TestScene/画像素材など
+├─ Scenes/GameScene/PracticeScene/ResultScene/TitleScene/TestScene/
 ├─ Script/
-└─ Audio/
+├─ Audio/
+├─ Tools/ (画像素材など)
+        └─Materials/
 ```
 TitleScene → PracticeScene → GameScene → ResultScene
 ---
