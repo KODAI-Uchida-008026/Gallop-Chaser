@@ -40,7 +40,7 @@ public class SceneDirector : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "ResultScene")
         {
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(15);
             SceneManager.LoadScene("TitleScene");
             Debug.Log("10秒経ってタイトルに戻る");
         }
