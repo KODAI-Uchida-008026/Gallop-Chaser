@@ -25,10 +25,11 @@
 | 項目 | 内容 |
 |------|------|
 | **制作者名** | 内田 皓大 |
-| **リポジトリ名** | 例：`Gallop-Chaser` |
-| **GitHub URL** | 例：`[https://github.com/YourName2026/MyGameProject](https://github.com/KodaiUchida2026/Gallop-Chaser)` |
+| **リポジトリ名** | `Gallop-Chaser` |
+| **GitHub URL** | `[https://github.com/YourName2026/MyGameProject](https://github.com/KodaiUchida2026/Gallop-Chaser)` |
 | **作成日** | 2026/05/18 |
 | **Unity バージョン** | Unity 6（URP） |
+|**プレイ動画**|(https://youtu.be/1KSy7G3E6ZI)|
 
 > ※ リポジトリ作成後、**指導講師を Collaborator に追加**してください。
 
