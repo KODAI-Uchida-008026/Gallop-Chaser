@@ -16,7 +16,7 @@
 - [苦労した点と解決策](#troubles)
 - [今後の改善点](#future)
 - [使用予定のUnity機能](#unity-features)
-- [進行スケジュール（目安）](#schedule)
+- [進行スケジュール](#schedule)
 - [進捗メモ](#progress-notes)
 - [エラーログ](#error-log)
 - [フォルダ構成](#folder-structure)
@@ -33,10 +33,10 @@
 |------|------|
 | **制作者名** | 内田 皓大 |
 | **リポジトリ名** | `Gallop-Chaser` |
-| **GitHub URL** | `(https://github.com/KODAI-Uchida-008026/Gallop-Chaser)` |
+| **GitHub URL** | `(https://github.com/K.U-008026/Gallop-Chaser)` |
 | **作成日** | 2026/05/18 |
 | **Unity バージョン** | Unity 6（URP） |
-|**プレイ動画**|(https://youtu.be/1KSy7G3E6ZI)|
+|**プレイ動画**|https://youtu.be/1KSy7G3E6ZI|
 
 ---
 
@@ -70,12 +70,13 @@
 
 ## 動作確認環境・操作方法 <a id="how-to-play"></a>
 
+**動作確認環境**
+
 | 項目 | 内容 |
 |------|------|
 | **OS** | Windows 11 |
 | **Unity Editor Version** | 6000.3.12f1 |
 | **ビルド済みファイル** | [こちらのリリースページからダウンロード](https://github.com/KODAI-Uchida-008026/Gallop-Chaser/releases/tag/v.1.4) |
-
 <br>
 
 **操作方法**
@@ -85,14 +86,13 @@
 | AS / ← → 左右矢印キー | 左右移動 |
 | W / ↑ 上矢印キー | 加速 |
 | S / ↓ 下矢印キー | ジャンプ(長押しで溜める) |
-| WASD / 矢印キー | 例：移動 |
 | 左クリック | 『GAME START』スタートボタンをクリック |
 | Esc | ゲーム終了 |
 <img width="2736" height="1528" alt="スクリーンショット 2026-09-12 221752" src="https://github.com/user-attachments/assets/faea9239-7815-4bd4-8e6d-27befd3f13cb" />
 
 ---
 
-## 完成度レベル（目標） <a id="completion-levels"></a>
+## 完成度レベル <a id="completion-levels"></a>
 
 | レベル | 内容 | 達成 |
 |--------|------|------|
@@ -142,9 +142,6 @@
 
 ## 苦労した点と解決策 <a id="troubles"></a>
 
-> エラー1つとその解決プロセスを具体的に書くと評価されます。  
-> 詳細は [エラーログ](#error-log) も参照してください。
-
 **苦労した点：UIスライダーと体力値の同期**
 体力値とUIのスライダーを同期させる処理で、ゲーム開始直後にゲージが急激に減少したり、回復処理がUIに正しく反映されなかったりする問題が発生しました。
 
@@ -158,10 +155,9 @@
 ---
 
 ## 今後の改善点 <a id="future"></a>
-
 騎乗者のモデルやアニメーションを追加し、馬に乗っている感覚をより分かりやすくする。
 定点追尾だけではなく、複数の視点からプレイヤーを見せるカメラシステムを実装する。
-PlayerPrefsのランキング機能から発展させ、JSONへの実装に挑戦する。
+PlayerPrefsのランキング機能から発展させ、JSONの実装に挑戦する。
 
 ---
 
@@ -244,8 +240,9 @@ Assets/
 └─Materials/
 ```
 ### **シーン構成**
+```
 TitleScene → PracticeScene → GameScene → ResultScene
-
+```
 ---
 
 ## AI利用の有無 <a id="use-of-ai"></a>
